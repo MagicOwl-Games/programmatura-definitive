@@ -1,8 +1,74 @@
 [gd_scene format=3 uid="uid://dwafxwbkhplgk"]
 
-[ext_resource type="Script" uid="uid://d04a5627a2jgw" path="res://scripts/action_buttons.gd" id="1_jbthi"]
+[ext_resource type="Script" uid="uid://d04a5627a2jgw" path="res://scripts/gui.gd" id="1_jbthi"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k0akp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x15ge"]
+bg_color = Color(0.25882354, 0.68235296, 0.6, 0.49411765)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_crd5m"]
+bg_color = Color(0.4509804, 0.69411767, 0.9372549, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.14509805, 0.60784316, 0.8392157, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0akp"]
+bg_color = Color(0.40936148, 0.67128253, 0.9303243, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.14461774, 0.60685134, 0.838859, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vorm"]
+bg_color = Color(0.21960784, 0.42745098, 0.3882353, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bwxsa"]
+bg_color = Color(0.4509804, 0.69411767, 0.9372549, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.14509805, 0.60784316, 0.8392157, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndsek"]
+bg_color = Color(0.40784314, 0.67058825, 0.92941177, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.14509805, 0.60784316, 0.8392157, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="Gui" type="Control" unique_id=2144426577]
 layout_mode = 3
@@ -11,6 +77,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jbthi")
 
 [node name="ActionButtons" type="Panel" parent="." unique_id=616847560]
 material = SubResource("CanvasItemMaterial_k0akp")
@@ -19,7 +86,6 @@ offset_left = 48.0
 offset_top = 304.0
 offset_right = 720.0
 offset_bottom = 464.0
-script = ExtResource("1_jbthi")
 
 [node name="MoveButton" type="Button" parent="ActionButtons" unique_id=383380187]
 layout_mode = 0
@@ -37,5 +103,74 @@ offset_right = 592.0
 offset_bottom = 112.0
 text = "Item"
 
-[connection signal="pressed" from="ActionButtons/MoveButton" to="ActionButtons" method="_on_move_button_pressed"]
-[connection signal="pressed" from="ActionButtons/ItemButton" to="ActionButtons" method="_on_item_button_pressed"]
+[node name="ItemsPanel" type="Panel" parent="." unique_id=1111391792]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 24.0
+offset_right = 704.0
+offset_bottom = 168.0
+
+[node name="CollectiblesPanel" type="Panel" parent="ItemsPanel" unique_id=871228639]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 312.0
+offset_bottom = 136.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x15ge")
+
+[node name="CollectiblesContainer" type="Panel" parent="ItemsPanel/CollectiblesPanel" unique_id=563649665]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 296.0
+offset_bottom = 120.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_crd5m")
+
+[node name="CollectiblesContainerGrid" type="GridContainer" parent="ItemsPanel/CollectiblesPanel/CollectiblesContainer" unique_id=35730991]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 72.0
+
+[node name="CollectiblesLabel" type="Label" parent="ItemsPanel/CollectiblesPanel" unique_id=602168353]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 120.0
+offset_bottom = 31.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_k0akp")
+text = "Collectibles"
+horizontal_alignment = 1
+
+[node name="ConsumablesPanel" type="Panel" parent="ItemsPanel" unique_id=218593547]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 8.0
+offset_right = 632.0
+offset_bottom = 136.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vorm")
+
+[node name="ConsumablesContainer" type="Panel" parent="ItemsPanel/ConsumablesPanel" unique_id=1735780010]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 296.0
+offset_bottom = 120.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bwxsa")
+
+[node name="ConsumablesContainerGrid" type="GridContainer" parent="ItemsPanel/ConsumablesPanel/ConsumablesContainer" unique_id=134009421]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 72.0
+
+[node name="ConsumablesLabel" type="Label" parent="ItemsPanel/ConsumablesPanel" unique_id=265637699]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ndsek")
+text = "Consumables"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="ActionButtons/MoveButton" to="." method="_on_move_button_pressed"]
+[connection signal="pressed" from="ActionButtons/ItemButton" to="." method="_on_item_button_pressed"]
