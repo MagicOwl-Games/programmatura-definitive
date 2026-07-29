@@ -1,3 +1,10 @@
 [gd_scene format=3 uid="uid://clttoyg11rxoo"]
 
+[ext_resource type="PackedScene" uid="uid://dwf38akyqbivt" path="res://scenes/stages/StageOne.tscn" id="1_gxo8o"]
+[ext_resource type="PackedScene" uid="uid://dwafxwbkhplgk" path="res://scenes/GUI.tscn" id="2_24d08"]
+
 [node name="Root" type="Node2D" unique_id=308721707]
+
+[node name="StageOne" parent="." unique_id=1930557894 instance=ExtResource("1_gxo8o")]
+
+[node name="Gui" parent="." unique_id=2144426577 instance=ExtResource("2_24d08")]
