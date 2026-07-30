@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dwafxwbkhplgk"]
 
 [ext_resource type="Script" uid="uid://d04a5627a2jgw" path="res://scripts/gui.gd" id="1_jbthi"]
+[ext_resource type="Texture2D" uid="uid://biy02jtjikgtw" path="res://assets/PNG/Default (64px)/floor_arrow_head.png" id="2_5j4t3"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k0akp"]
 
@@ -106,9 +107,9 @@ text = "Item"
 [node name="ItemsPanel" type="Panel" parent="." unique_id=1111391792]
 layout_mode = 0
 offset_left = 64.0
-offset_top = 24.0
+offset_top = 64.0
 offset_right = 704.0
-offset_bottom = 168.0
+offset_bottom = 208.0
 
 [node name="CollectiblesPanel" type="Panel" parent="ItemsPanel" unique_id=871228639]
 layout_mode = 0
@@ -172,5 +173,19 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ndsek")
 text = "Consumables"
 horizontal_alignment = 1
 
+[node name="CloseButtonPanel" type="Panel" parent="ItemsPanel" unique_id=396737295]
+layout_mode = 0
+offset_left = 600.0
+offset_right = 640.0
+offset_bottom = 40.0
+
+[node name="CloseItemsPanelButton" type="Button" parent="ItemsPanel/CloseButtonPanel" unique_id=1505961525]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+icon = ExtResource("2_5j4t3")
+expand_icon = true
+
 [connection signal="pressed" from="ActionButtons/MoveButton" to="." method="_on_move_button_pressed"]
 [connection signal="pressed" from="ActionButtons/ItemButton" to="." method="_on_item_button_pressed"]
+[connection signal="pressed" from="ItemsPanel/CloseButtonPanel/CloseItemsPanelButton" to="." method="_on_close_items_panel_button_pressed"]
