@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Programmatura"
+run/main_scene="uid://clttoyg11rxoo"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameState="*uid://ckcudsa2cvj0x"
 
 [display]
 
