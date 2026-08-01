@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameState="*uid://ckcudsa2cvj0x"
+TurnManager="*uid://xrdbm6e7gnsh"
 
 [display]
 

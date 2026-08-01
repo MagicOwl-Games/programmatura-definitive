@@ -12,3 +12,18 @@ texture = ExtResource("1_p0vlq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=920496892]
 shape = SubResource("RectangleShape2D_x15ge")
+
+[node name="UpRaycast2D" type="RayCast2D" parent="." unique_id=1515544538]
+position = Vector2(0, -32)
+rotation = 3.1415927
+
+[node name="DownRaycast2D" type="RayCast2D" parent="." unique_id=1816482995]
+position = Vector2(0, 32)
+
+[node name="LeftRaycast2D" type="RayCast2D" parent="." unique_id=820693848]
+position = Vector2(-32, 0)
+rotation = 1.5707964
+
+[node name="RightRaycast2D" type="RayCast2D" parent="." unique_id=1273897412]
+position = Vector2(32, 0)
+rotation = -1.5707964

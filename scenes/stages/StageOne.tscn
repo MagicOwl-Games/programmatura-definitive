@@ -1,6 +1,8 @@
 [gd_scene format=4 uid="uid://dwf38akyqbivt"]
 
 [ext_resource type="Texture2D" uid="uid://coxu4w5r78fi2" path="res://assets/Tilesheet/tilesheet.png" id="1_61w4j"]
+[ext_resource type="PackedScene" uid="uid://cmeflnplkg450" path="res://scenes/Player.tscn" id="2_sxmrw"]
+[ext_resource type="PackedScene" uid="uid://b5i0jibv30d3s" path="res://scenes/Enemy.tscn" id="3_fceun"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sxmrw"]
 texture = ExtResource("1_61w4j")
@@ -1596,3 +1598,18 @@ tile_set = SubResource("TileSet_x15ge")
 [node name="Obstacles" type="TileMapLayer" parent="." unique_id=1721969589]
 tile_map_data = PackedByteArray("AAAEAAQAAAAOAAIAAAAEAAUAAAAOAAMAAAAFAAQAAAAPAAIAAAAFAAUAAAAPAAMAAAAEAAgAAAAOAAIAAAAEAAkAAAAOAAMAAAAFAAgAAAAPAAIAAAAFAAkAAAAPAAMAAAAIAAgAAAAOAAIAAAAJAAgAAAAPAAIAAAAJAAkAAAAPAAMAAAAIAAkAAAAOAAMAAAAMAAgAAAAOAAIAAAAMAAkAAAAOAAMAAAANAAgAAAAPAAIAAAANAAkAAAAPAAMAAAAQAAgAAAAOAAIAAAAQAAkAAAAOAAMAAAARAAgAAAAPAAIAAAARAAkAAAAPAAMAAAAQAAQAAAAOAAIAAAAQAAUAAAAOAAMAAAARAAQAAAAPAAIAAAARAAUAAAAPAAMAAAAMAAQAAAAOAAIAAAAMAAUAAAAOAAMAAAANAAQAAAAPAAIAAAANAAUAAAAPAAMAAAAIAAQAAAAOAAIAAAAIAAUAAAAOAAMAAAAJAAQAAAAPAAIAAAAJAAUAAAAPAAMAAAAEAAwAAAAOAAIAAAAEAA0AAAAOAAMAAAAFAAwAAAAPAAIAAAAFAA0AAAAPAAMAAAAIAAwAAAAOAAIAAAAIAA0AAAAOAAMAAAAJAAwAAAAPAAIAAAAJAA0AAAAPAAMAAAAMAAwAAAAOAAIAAAAMAA0AAAAOAAMAAAANAAwAAAAPAAIAAAANAA0AAAAPAAMAAAAQAAwAAAAOAAIAAAAQAA0AAAAOAAMAAAARAAwAAAAPAAIAAAARAA0AAAAPAAMAAAAUAAoAAAAOAAIAAAAUAAsAAAAOAAMAAAAVAAoAAAAPAAIAAAAVAAsAAAAPAAMAAAAUAAYAAAAOAAIAAAAUAAcAAAAOAAMAAAAVAAYAAAAPAAIAAAAVAAcAAAAPAAMAAAAUAAIAAAAOAAIAAAAUAAMAAAAOAAMAAAAVAAIAAAAPAAIAAAAVAAMAAAAPAAMAAAA=")
 tile_set = SubResource("TileSet_k0akp")
+
+[node name="Player" parent="." unique_id=1170735177 instance=ExtResource("2_sxmrw")]
+position = Vector2(96, 96)
+
+[node name="Enemy" parent="." unique_id=1794450006 instance=ExtResource("3_fceun")]
+position = Vector2(224, 224)
+
+[node name="Enemy2" parent="." unique_id=254112764 instance=ExtResource("3_fceun")]
+position = Vector2(224, 352)
+
+[node name="Enemy3" parent="." unique_id=568634826 instance=ExtResource("3_fceun")]
+position = Vector2(480, 224)
+
+[node name="Enemy4" parent="." unique_id=291117496 instance=ExtResource("3_fceun")]
+position = Vector2(480, 352)

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b5i0jibv30d3s"]
+
+[ext_resource type="Texture2D" uid="uid://cfmbq8y8wmhql" path="res://assets/PNG/Default (64px)/Characters/red_character.png" id="1_3gvst"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
+size = Vector2(64, 64)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1794450006]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1689968784]
+texture = ExtResource("1_3gvst")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1240699173]
+shape = SubResource("RectangleShape2D_x15ge")
+
+[node name="DetectionArea" type="Node2D" parent="." unique_id=2026924033]
+
+[node name="UpRayCast2D" type="RayCast2D" parent="DetectionArea" unique_id=134308877]
+position = Vector2(0, -32)
+rotation = 3.1415927
+
+[node name="DownRayCast2D" type="RayCast2D" parent="DetectionArea" unique_id=35122662]
+position = Vector2(0, 32)
+
+[node name="LeftRayCast2D" type="RayCast2D" parent="DetectionArea" unique_id=512734692]
+position = Vector2(-32, 0)
+rotation = 1.5707964
+
+[node name="RightRayCast2D" type="RayCast2D" parent="DetectionArea" unique_id=1547208084]
+position = Vector2(32, 0)
+rotation = -1.5707964
