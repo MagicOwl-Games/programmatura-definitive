@@ -25,7 +25,6 @@ func _on_gui_handle_is_moving_player_signal(is_moving: bool) -> void:
 	$ActionButtons/ItemButton.disabled = is_moving;
 	$ActionButtons/MoveButton.disabled = is_moving;	
 	$ActionButtons.position.y = $ActionButtons.position.y + 140 if is_moving else $ActionButtons.position.y - 140;
-	print('signal emmited');
 
 func _on_move_button_pressed() -> void:
 	TurnManager.is_moving_player_signal.emit(true);
