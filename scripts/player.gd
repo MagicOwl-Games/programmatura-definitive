@@ -3,7 +3,6 @@ extends Character;
 
 var collectibles: Array[Item];
 var consumables: Array[Item];
-#var raycasts: Array[RayCast2D];
 var collision_free_areas: Array[Area2D];
 
 # TODO: is it gonna be initialized with "new()" somewhere? who knows
@@ -33,11 +32,8 @@ func _on_move_button_pressed(node_path: String) -> void:
 	var button: Area2D = get_node(node_path);
 	var position_to_move: Vector2 = button.position;
 	position += position_to_move;
+	TurnManager.is_moving_enemies_signal.emit(true);
 	TurnManager.is_moving_player_signal.emit(false);
-	#print("move button parent node: %s" % button_raycast.name)
-	#print("move button parent node x: %s" % button_raycast.position.x);
-	##print("move button pressed x: %s" % button.global_position.x);
-	#print("move button pressed y: %s" % button.global_position.y);
 
 func handle_player_collision_check(is_moving: bool) -> void:
 	for area in collision_free_areas:
