@@ -5,6 +5,7 @@ signal item_menu_signal(is_open: bool);
 # TODO: write a safer type for items in general
 var collectibles: Array[Item] = [];
 var consumables: Array[Item] = [];
+var player;
 
 var is_item_menu_open: bool = false;
 

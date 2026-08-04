@@ -1,14 +1,89 @@
 [gd_scene format=3 uid="uid://cmeflnplkg450"]
 
 [ext_resource type="Texture2D" uid="uid://bbwysdl503gx8" path="res://assets/PNG/Default (64px)/Characters/green_character.png" id="1_p0vlq"]
+[ext_resource type="Script" uid="uid://cuayc40qfiuxl" path="res://scripts/player.gd" id="1_v6fml"]
+[ext_resource type="Texture2D" uid="uid://cmy7nq4k3vi1m" path="res://assets/PNG/Default (64px)/Characters/green_hand.png" id="3_3li8b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
 size = Vector2(64, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0akp"]
+size = Vector2(56, 55.999996)
+
 [node name="Player" type="CharacterBody2D" unique_id=1170735177]
+script = ExtResource("1_v6fml")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1991211972]
 texture = ExtResource("1_p0vlq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=920496892]
 shape = SubResource("RectangleShape2D_x15ge")
+
+[node name="UpArea2D" type="Area2D" parent="." unique_id=1675468393]
+position = Vector2(0, -64)
+
+[node name="UpButton" type="Button" parent="UpArea2D" unique_id=82150947]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("3_3li8b")
+expand_icon = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpArea2D" unique_id=1019354266]
+shape = SubResource("RectangleShape2D_k0akp")
+
+[node name="DownArea2D" type="Area2D" parent="." unique_id=708208506]
+position = Vector2(0, 64)
+
+[node name="DownButton" type="Button" parent="DownArea2D" unique_id=1074500714]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+icon = ExtResource("3_3li8b")
+expand_icon = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DownArea2D" unique_id=1106467501]
+position = Vector2(-1.9073486e-06, 0)
+shape = SubResource("RectangleShape2D_k0akp")
+
+[node name="LeftArea2D" type="Area2D" parent="." unique_id=1521467940]
+position = Vector2(-64, 0)
+
+[node name="LeftButton" type="Button" parent="LeftArea2D" unique_id=1458803549]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+icon = ExtResource("3_3li8b")
+expand_icon = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftArea2D" unique_id=688853507]
+shape = SubResource("RectangleShape2D_k0akp")
+
+[node name="RightArea2D" type="Area2D" parent="." unique_id=27624573]
+position = Vector2(64, 0)
+
+[node name="RightButton" type="Button" parent="RightArea2D" unique_id=2024607454]
+offset_left = -31.999998
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+icon = ExtResource("3_3li8b")
+expand_icon = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightArea2D" unique_id=1977660698]
+shape = SubResource("RectangleShape2D_k0akp")
+
+[connection signal="pressed" from="UpArea2D/UpButton" to="." method="_on_move_button_pressed" binds= [NodePath("UpArea2D")]]
+[connection signal="pressed" from="DownArea2D/DownButton" to="." method="_on_move_button_pressed" binds= [NodePath("DownArea2D")]]
+[connection signal="pressed" from="LeftArea2D/LeftButton" to="." method="_on_move_button_pressed" binds= [NodePath("LeftArea2D")]]
+[connection signal="pressed" from="RightArea2D/RightButton" to="." method="_on_move_button_pressed" binds= [NodePath("RightArea2D")]]

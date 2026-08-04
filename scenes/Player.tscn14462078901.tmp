@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cmeflnplkg450"]
+
+[ext_resource type="Texture2D" uid="uid://bbwysdl503gx8" path="res://assets/PNG/Default (64px)/Characters/green_character.png" id="1_p0vlq"]
+[ext_resource type="Script" uid="uid://cuayc40qfiuxl" path="res://scripts/player.gd" id="1_v6fml"]
+[ext_resource type="Texture2D" uid="uid://cmy7nq4k3vi1m" path="res://assets/PNG/Default (64px)/Characters/green_hand.png" id="3_3li8b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
+size = Vector2(64, 64)
+
+[node name="Player" type="CharacterBody2D" unique_id=1170735177]
+script = ExtResource("1_v6fml")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1991211972]
+texture = ExtResource("1_p0vlq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=920496892]
+shape = SubResource("RectangleShape2D_x15ge")
+
+[node name="UpRaycast2D" type="RayCast2D" parent="." unique_id=1515544538]
+position = Vector2(0, -32)
+rotation = 3.1415927
+
+[node name="Sprite2D" type="Sprite2D" parent="UpRaycast2D" unique_id=1623152353]
+position = Vector2(2.7975289e-06, 32)
+texture = ExtResource("3_3li8b")
+
+[node name="DownRaycast2D" type="RayCast2D" parent="." unique_id=1816482995]
+position = Vector2(0, 32)
+
+[node name="Sprite2D" type="Sprite2D" parent="DownRaycast2D" unique_id=1535933673]
+position = Vector2(0, 32)
+texture = ExtResource("3_3li8b")
+
+[node name="LeftRaycast2D" type="RayCast2D" parent="." unique_id=820693848]
+position = Vector2(-32, 0)
+rotation = 1.5707964
+
+[node name="Sprite2D" type="Sprite2D" parent="LeftRaycast2D" unique_id=1860187710]
+position = Vector2(1.3987644e-06, 32)
+texture = ExtResource("3_3li8b")
+
+[node name="RightRaycast2D" type="RayCast2D" parent="." unique_id=1273897412]
+position = Vector2(32, 0)
+rotation = -1.5707964
+
+[node name="Sprite2D" type="Sprite2D" parent="RightRaycast2D" unique_id=177394915]
+position = Vector2(-1.3987644e-06, 32)
+texture = ExtResource("3_3li8b")

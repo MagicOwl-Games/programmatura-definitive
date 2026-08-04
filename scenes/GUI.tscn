@@ -104,6 +104,19 @@ offset_right = 592.0
 offset_bottom = 112.0
 text = "Item"
 
+[node name="CloseButtonPanel" type="Panel" parent="ActionButtons" unique_id=365668174]
+layout_mode = 0
+offset_left = 632.0
+offset_top = -40.0
+offset_right = 672.0
+
+[node name="RestoreActionMenuPanelButton" type="Button" parent="ActionButtons/CloseButtonPanel" unique_id=382443369]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+icon = ExtResource("2_5j4t3")
+expand_icon = true
+
 [node name="ItemsPanel" type="Panel" parent="." unique_id=1111391792]
 layout_mode = 0
 offset_left = 64.0
@@ -188,4 +201,5 @@ expand_icon = true
 
 [connection signal="pressed" from="ActionButtons/MoveButton" to="." method="_on_move_button_pressed"]
 [connection signal="pressed" from="ActionButtons/ItemButton" to="." method="_on_item_button_pressed"]
+[connection signal="pressed" from="ActionButtons/CloseButtonPanel/RestoreActionMenuPanelButton" to="." method="_on_restore_action_menu_panel_button_pressed"]
 [connection signal="pressed" from="ItemsPanel/CloseButtonPanel/CloseItemsPanelButton" to="." method="_on_close_items_panel_button_pressed"]

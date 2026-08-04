@@ -15,11 +15,14 @@ The first version is supposed to have 5 to 10 stages. Later versions are being p
 but very high number of stages.
 
 ## TO-DO
-- Title Screen
 - Main Scene
-- Game Over Scene
-- Stage Scene
-- UI
-	- Commands (Move, Items)
-- Detection AI (4-way detection)
-- 4-way tile-based movement.
+- [ ] Title Screen
+- [ ] Game Over Scene
+- [ ] Stage Scene
+- [ ] UI
+	- [ ] Commands (Move, Items)
+- [ ] Detection AI (4-way detection)
+- [x] 4-way tile-based movement.
+- [ ] Turn manager
+	- [x] Enemies move after the player
+	- [ ] Smoother move transitions (affects UI directly)
