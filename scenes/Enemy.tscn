@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cfmbq8y8wmhql" path="res://assets/PNG/Default (64px)/Characters/red_character.png" id="1_3gvst"]
 [ext_resource type="Script" uid="uid://c7cyyhqduhd7q" path="res://scripts/enemy.gd" id="1_55jtl"]
+[ext_resource type="Texture2D" uid="uid://nr0q8mwt7rna" path="res://assets/PNG/Default (64px)/dragon.png" id="3_ft8do"]
+[ext_resource type="Texture2D" uid="uid://c8tokpxo72ref" path="res://assets/PNG/Default (64px)/Characters/red_hand.png" id="3_mpr68"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
 size = Vector2(64, 64)
@@ -18,6 +20,9 @@ size = Vector2(48, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwxsa"]
 size = Vector2(48, 48)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crd5m"]
+size = Vector2(20, 48)
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1794450006]
 script = ExtResource("1_55jtl")
 
@@ -27,28 +32,50 @@ texture = ExtResource("1_3gvst")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1240699173]
 shape = SubResource("RectangleShape2D_x15ge")
 
-[node name="DetectionArea" type="Node2D" parent="." unique_id=2026924033]
+[node name="MovementArea" type="Node2D" parent="." unique_id=2026924033]
 
-[node name="UpArea2D" type="Area2D" parent="DetectionArea" unique_id=1936333906]
+[node name="UpArea2D" type="Area2D" parent="MovementArea" unique_id=1936333906]
 position = Vector2(0, -64)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea/UpArea2D" unique_id=2023812765]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovementArea/UpArea2D" unique_id=2023812765]
 shape = SubResource("RectangleShape2D_k0akp")
 
-[node name="DownArea2D" type="Area2D" parent="DetectionArea" unique_id=637839001]
+[node name="Sprite2D" type="Sprite2D" parent="MovementArea/UpArea2D" unique_id=2108222783]
+texture = ExtResource("3_ft8do")
+
+[node name="DownArea2D" type="Area2D" parent="MovementArea" unique_id=637839001]
 position = Vector2(0, 64)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea/DownArea2D" unique_id=1630115261]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovementArea/DownArea2D" unique_id=1630115261]
 shape = SubResource("RectangleShape2D_rtqtc")
 
-[node name="LeftArea2D" type="Area2D" parent="DetectionArea" unique_id=1913402173]
+[node name="Sprite2D" type="Sprite2D" parent="MovementArea/DownArea2D" unique_id=2001712812]
+texture = ExtResource("3_ft8do")
+
+[node name="LeftArea2D" type="Area2D" parent="MovementArea" unique_id=1913402173]
 position = Vector2(-64, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea/LeftArea2D" unique_id=1316607855]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovementArea/LeftArea2D" unique_id=1316607855]
 shape = SubResource("RectangleShape2D_ndsek")
 
-[node name="RightArea2D" type="Area2D" parent="DetectionArea" unique_id=1865849651]
+[node name="Sprite2D" type="Sprite2D" parent="MovementArea/LeftArea2D" unique_id=677766956]
+texture = ExtResource("3_ft8do")
+
+[node name="RightArea2D" type="Area2D" parent="MovementArea" unique_id=1865849651]
 position = Vector2(64, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea/RightArea2D" unique_id=1218783731]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovementArea/RightArea2D" unique_id=1218783731]
 shape = SubResource("RectangleShape2D_bwxsa")
+
+[node name="Sprite2D" type="Sprite2D" parent="MovementArea/RightArea2D" unique_id=1786285349]
+texture = ExtResource("3_ft8do")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=349799831]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1663243637]
+shape = SubResource("RectangleShape2D_crd5m")
+debug_color = Color(0.76896435, 0.24604651, 0.68799853, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="DetectionArea" unique_id=1179171825]
+texture = ExtResource("3_mpr68")

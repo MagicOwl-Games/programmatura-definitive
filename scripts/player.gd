@@ -30,17 +30,17 @@ func _ready() -> void:
 	
 	
 func _on_player_handle_is_moving_player_signal(is_moving: bool) -> void:
-	print("player signal handler activated: %s" % is_moving);
+	#print("player signal handler activated: %s" % is_moving);
 	handle_player_collision_check(is_moving);
 
 func _on_move_button_pressed(node_path: String) -> void:
 	var button: Area2D = get_node(node_path);
 	var position_to_move: Vector2 = button.position;
 	position += position_to_move;
-	TurnManager.is_moving_enemies_signal.emit(true);
+	TurnManager.is_moving_enemies_signal.emit();
 	TurnManager.is_moving_player_signal.emit(false);
 
 func handle_player_collision_check(is_moving: bool) -> void:
 	for area in collision_free_areas:
-		if not area.has_overlapping_areas():
+		if not area.has_overlapping_areas() and not area.has_overlapping_bodies():
 			area.visible = is_moving;

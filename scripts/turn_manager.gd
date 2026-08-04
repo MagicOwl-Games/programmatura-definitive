@@ -2,7 +2,7 @@ extends Node
 
 signal is_player_turn_now;
 signal is_moving_player_signal(is_moving: bool);
-signal is_moving_enemies_signal(is_moving: bool);
+signal is_moving_enemies_signal;
 
 var turn_queue: Array = [];
 var current_turn_index: int = 0;

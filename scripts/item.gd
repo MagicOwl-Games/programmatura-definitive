@@ -7,6 +7,15 @@ var is_consumable: bool = false;
 var item_name: String;
 var item_quantity: int;
 
+# TODO:
+# CONSUMABLES
+# - Double move: can move 2 squares instead of one
+# - Double turn: it grants one turn after your current one, making your enemies
+#wait longer.
+# - Freeze Gun: it stops one enemy in the range of a 2 squares for 3 turns. In
+#this state, detection doesn't work.
+# - Exterminator: it destroys one enemy, but it will be revived after 3 turns
+
 func _init(
 	p_name: String,
 	p_quantity: int = 1,

@@ -1738,10 +1738,13 @@ position = Vector2(352, 160)
 position = Vector2(224, 224)
 
 [node name="Enemy2" parent="." unique_id=254112764 instance=ExtResource("3_fceun")]
+modulate = Color(0.45882353, 0.47843137, 0.88235295, 1)
 position = Vector2(224, 352)
 
 [node name="Enemy3" parent="." unique_id=568634826 instance=ExtResource("3_fceun")]
+modulate = Color(0.21987173, 0.46917158, 0.24234155, 1)
 position = Vector2(480, 224)
 
 [node name="Enemy4" parent="." unique_id=291117496 instance=ExtResource("3_fceun")]
+modulate = Color(0.18947732, 0.31960583, 0.6978603, 1)
 position = Vector2(480, 352)
