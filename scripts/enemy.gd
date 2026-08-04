@@ -1,5 +1,10 @@
 extends CharacterBody2D
 
+# TODO:
+# - each enemy should have a fixed path to follow until the player is found
+# - enemies should have different ranges of detection and different speed (move
+#more or less squares)
+
 @onready var detection_area: Node2D = $DetectionArea;
 
 var collision_areas: Array;

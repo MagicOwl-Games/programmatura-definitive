@@ -1,6 +1,11 @@
 class_name Player
 extends Character;
 
+# TODO:
+# - the player can get power ups from items, such as double turn or a bigger
+#range of movement for a few turns
+# - some items will affect the enemies and the stage
+
 var collectibles: Array[Item];
 var consumables: Array[Item];
 var collision_free_areas: Array[Area2D];
