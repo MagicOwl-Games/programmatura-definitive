@@ -12,6 +12,10 @@ extends CharacterBody2D
 # - the detection area can be turned to a blocked space (walls and obstacles),
 #while it shouldn't. It's better is the enemy finds another way to face, but checking
 #the collision shapes after repositioning the enemy is not working.
+# TODO:
+# - has_overlapping_areas collides with any area, so it is conflicting with the
+#detection areas of other enemies. check if the colliding object is a wall or
+#obstacles
 
 @onready var movement_area: Node2D = $MovementArea;
 @onready var detection_area: Node2D = $DetectionArea;
@@ -67,7 +71,7 @@ func handle_detection_area() -> void:
 		return;
 	
 	if free_areas.size() == 1:
-		detection_area.position += free_areas[0].position;
+		detection_area.position = free_areas[0].position;
 		detection_area.show();
 		return;
 	
@@ -89,7 +93,7 @@ func init_detection_area() -> void:
 		return;
 	
 	if free_areas.size() == 1:
-		detection_area.position += free_areas[0].position;
+		detection_area.position = free_areas[0].position;
 		detection_area.show();
 		return;
 	
