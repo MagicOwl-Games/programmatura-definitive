@@ -21,22 +21,22 @@ shape = SubResource("RectangleShape2D_x15ge")
 [node name="UpRayCast2D" type="RayCast2D" parent="MovementArea" unique_id=1421488867]
 position = Vector2(0, -36)
 target_position = Vector2(0, -28)
-collide_with_areas = true
+hit_from_inside = true
 
 [node name="DownRayCast2D" type="RayCast2D" parent="MovementArea" unique_id=1083460051]
 position = Vector2(0, 36)
 target_position = Vector2(0, 28)
-collide_with_areas = true
+hit_from_inside = true
 
 [node name="LeftRayCast2D" type="RayCast2D" parent="MovementArea" unique_id=768486998]
 position = Vector2(-36, 0)
 target_position = Vector2(-28, 0)
-collide_with_areas = true
+hit_from_inside = true
 
 [node name="RightRayCast2D" type="RayCast2D" parent="MovementArea" unique_id=1425524595]
 position = Vector2(36, 0)
 target_position = Vector2(28, 0)
-collide_with_areas = true
+hit_from_inside = true
 
 [node name="UI" type="Control" parent="." unique_id=26633883]
 layout_mode = 3

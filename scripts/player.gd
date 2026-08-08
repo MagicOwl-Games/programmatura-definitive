@@ -8,10 +8,10 @@ extends Character;
 @onready var right_raycast: RayCast2D = $MovementArea/RightRayCast2D;
 
 # MOVE BUTTONS
-@onready var up_button: Button = $UpButton;
-@onready var down_button: Button = $DownButton;
-@onready var left_button: Button = $LeftButton;
-@onready var right_button: Button = $RightButton;
+@onready var up_button: Button = $UI/UpButton;
+@onready var down_button: Button = $UI/DownButton;
+@onready var left_button: Button = $UI/LeftButton;
+@onready var right_button: Button = $UI/RightButton;
 
 # TODO:
 # - the player can get power ups from items, such as double turn or a bigger
