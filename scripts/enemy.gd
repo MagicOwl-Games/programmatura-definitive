@@ -20,10 +20,13 @@ extends CharacterBody2D
 @onready var movement_area: Node2D = $MovementArea;
 @onready var detection_area: Node2D = $DetectionArea;
 
+# FIX: still can't type it properly, try to figure out a way of defining its value
+#without using get_children().
 var collision_areas: Array;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# FIX: WOW!!! SUCH GOOD CODE MUCH WOW
 	collision_areas = movement_area.get_children();
 	detection_area.hide();
 	init_detection_area();
@@ -39,7 +42,8 @@ func _on_enemy_handle_is_moving_enemies_signal() -> void:
 	for area in collision_areas:
 		#print("area is area2D: %s" % area is Area2D);
 		#print("area is overlapping_areas: %s" % area.has_overlapping_areas());
-		if area is Area2D and not area.has_overlapping_areas():
+		# FIX: be more specific about the bodies
+		if not area.has_overlapping_bodies():
 			#print("area info: %s" % area.name);
 			free_areas.append(area);
 
@@ -52,7 +56,6 @@ func _on_enemy_handle_is_moving_enemies_signal() -> void:
 		return;
 	
 	var free_random: Area2D = free_areas.pick_random();
-	print("%s before detection handling %s" % [self.name, self.position]);
 	self.position += free_random.position;
 	handle_detection_area();
 	#detection_area.position = free_random.position;
@@ -60,11 +63,10 @@ func _on_enemy_handle_is_moving_enemies_signal() -> void:
 	#TurnManager.is_moving_enemies_signal.emit(false);
 
 func handle_detection_area() -> void:
-	print("%s after detection handling %s" % [self.name, self.position]);
 	var free_areas: Array[Area2D] = [];
 	
 	for area in collision_areas:
-		if area is Area2D and not area.has_overlapping_areas():
+		if not area.has_overlapping_bodies():
 			free_areas.append(area);
 	
 	if free_areas.size() == 0:
@@ -75,8 +77,8 @@ func handle_detection_area() -> void:
 		detection_area.show();
 		return;
 	
-	for area in free_areas:
-		area.modulate = Color(20, 0, 0);
+	#for area in free_areas:
+		#area.modulate = Color(20, 0, 0);
 		
 	var free_random: Area2D = free_areas.pick_random();
 	detection_area.position = free_random.position;
@@ -86,7 +88,8 @@ func init_detection_area() -> void:
 	var free_areas: Array[Area2D] =  [];
 	
 	for area in collision_areas:
-		if area is Area2D and not area.has_overlapping_areas():
+		# FIX: be more specific
+		if not area.has_overlapping_bodies():
 			free_areas.append(area);
 	
 	if free_areas.size() == 0:

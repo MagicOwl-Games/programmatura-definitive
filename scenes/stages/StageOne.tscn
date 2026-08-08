@@ -1610,28 +1610,28 @@ tile_set = SubResource("TileSet_aylpi")
 tile_map_data = PackedByteArray("AAABAAEAAAASAAAAAAABAAIAAAASAAEAAAACAAEAAAATAAAAAAAVAAEAAAASAAEAAFAWAAIAAAATAAAAAFAWAAEAAAASAAAAAFAWAA0AAAASAAEAADAWAA4AAAASAAAAADAVAA4AAAATAAAAADACAA4AAAASAAEAAGABAA0AAAATAAAAAGABAA4AAAASAAAAAGADAAEAAAAUAAAAAAAEAAEAAAAVAAAAAAAFAAEAAAAUAAAAAAAGAAEAAAAVAAAAAAAHAAEAAAAUAAAAAAAIAAEAAAAVAAAAAAAJAAEAAAAUAAAAAAAKAAEAAAAVAAAAAAALAAEAAAAUAAAAAAAMAAEAAAAVAAAAAAANAAEAAAAUAAAAAAAOAAEAAAAVAAAAAAAPAAEAAAAUAAAAAAAQAAEAAAAVAAAAAAARAAEAAAAUAAAAAAASAAEAAAAVAAAAAAATAAEAAAAUAAAAAAAUAAEAAAAVAAAAAAAEAA4AAAAUAAAAADADAA4AAAAVAAAAADAGAA4AAAAUAAAAADAFAA4AAAAVAAAAADAIAA4AAAAUAAAAADAHAA4AAAAVAAAAADAKAA4AAAAUAAAAADAJAA4AAAAVAAAAADAMAA4AAAAUAAAAADALAA4AAAAVAAAAADAOAA4AAAAUAAAAADANAA4AAAAVAAAAADAQAA4AAAAUAAAAADAPAA4AAAAVAAAAADASAA4AAAAUAAAAADARAA4AAAAVAAAAADAUAA4AAAAUAAAAADATAA4AAAAVAAAAADABAAMAAAAVAAAAAGABAAQAAAAUAAAAAGABAAUAAAAVAAAAAGABAAYAAAAUAAAAAGABAAcAAAAVAAAAAGABAAgAAAAUAAAAAGABAAkAAAAVAAAAAGABAAoAAAAUAAAAAGABAAsAAAAVAAAAAGABAAwAAAAUAAAAAGAWAAMAAAAUAAAAAFAWAAQAAAAVAAAAAFAWAAUAAAAUAAAAAFAWAAYAAAAVAAAAAFAWAAcAAAAUAAAAAFAWAAgAAAAVAAAAAFAWAAkAAAAUAAAAAFAWAAoAAAAVAAAAAFAWAAsAAAAUAAAAAFAWAAwAAAAVAAAAAFA=")
 tile_set = SubResource("TileSet_x15ge")
 
-[node name="UpperWall" type="Area2D" parent="Walls" unique_id=1305596259]
+[node name="UpperWall" type="StaticBody2D" parent="Walls" unique_id=137853725]
 position = Vector2(40, 40)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/UpperWall" unique_id=863397647]
 position = Vector2(344, 0)
 shape = SubResource("RectangleShape2D_x15ge")
 
-[node name="RightWall" type="Area2D" parent="Walls" unique_id=140814010]
+[node name="RightWall" type="StaticBody2D" parent="Walls" unique_id=912538484]
 position = Vector2(720, 56)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall" unique_id=1699053094]
 position = Vector2(0, 200)
 shape = SubResource("RectangleShape2D_k0akp")
 
-[node name="BottomWall" type="Area2D" parent="Walls" unique_id=244389277]
+[node name="BottomWall" type="StaticBody2D" parent="Walls" unique_id=1745058791]
 position = Vector2(40, 472)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall" unique_id=1422314073]
 position = Vector2(340, 0)
 shape = SubResource("RectangleShape2D_rtqtc")
 
-[node name="LeftWall" type="Area2D" parent="Walls" unique_id=92525324]
+[node name="LeftWall" type="StaticBody2D" parent="Walls" unique_id=111487196]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall" unique_id=1970380232]
 position = Vector2(40, 259)
@@ -1641,110 +1641,98 @@ shape = SubResource("RectangleShape2D_ndsek")
 tile_map_data = PackedByteArray("AAAEAAQAAAAOAAIAAAAEAAUAAAAOAAMAAAAFAAQAAAAPAAIAAAAFAAUAAAAPAAMAAAAEAAgAAAAOAAIAAAAEAAkAAAAOAAMAAAAFAAgAAAAPAAIAAAAFAAkAAAAPAAMAAAAIAAgAAAAOAAIAAAAJAAgAAAAPAAIAAAAJAAkAAAAPAAMAAAAIAAkAAAAOAAMAAAAMAAgAAAAOAAIAAAAMAAkAAAAOAAMAAAANAAgAAAAPAAIAAAANAAkAAAAPAAMAAAAQAAgAAAAOAAIAAAAQAAkAAAAOAAMAAAARAAgAAAAPAAIAAAARAAkAAAAPAAMAAAAQAAQAAAAOAAIAAAAQAAUAAAAOAAMAAAARAAQAAAAPAAIAAAARAAUAAAAPAAMAAAAMAAQAAAAOAAIAAAAMAAUAAAAOAAMAAAANAAQAAAAPAAIAAAANAAUAAAAPAAMAAAAIAAQAAAAOAAIAAAAIAAUAAAAOAAMAAAAJAAQAAAAPAAIAAAAJAAUAAAAPAAMAAAAEAAwAAAAOAAIAAAAEAA0AAAAOAAMAAAAFAAwAAAAPAAIAAAAFAA0AAAAPAAMAAAAIAAwAAAAOAAIAAAAIAA0AAAAOAAMAAAAJAAwAAAAPAAIAAAAJAA0AAAAPAAMAAAAMAAwAAAAOAAIAAAAMAA0AAAAOAAMAAAANAAwAAAAPAAIAAAANAA0AAAAPAAMAAAAQAAwAAAAOAAIAAAAQAA0AAAAOAAMAAAARAAwAAAAPAAIAAAARAA0AAAAPAAMAAAAUAAoAAAAOAAIAAAAUAAsAAAAOAAMAAAAVAAoAAAAPAAIAAAAVAAsAAAAPAAMAAAAUAAYAAAAOAAIAAAAUAAcAAAAOAAMAAAAVAAYAAAAPAAIAAAAVAAcAAAAPAAMAAAAUAAIAAAAOAAIAAAAUAAMAAAAOAAMAAAAVAAIAAAAPAAIAAAAVAAMAAAAPAAMAAAA=")
 tile_set = SubResource("TileSet_k0akp")
 
-[node name="Box1" type="Area2D" parent="Obstacles" unique_id=1557271816]
+[node name="Box1" type="StaticBody2D" parent="Obstacles" unique_id=1490842597]
 position = Vector2(160, 160)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Box1" unique_id=611865403]
 shape = SubResource("RectangleShape2D_bwxsa")
 
-[node name="Box2" type="Area2D" parent="Obstacles" unique_id=1922679253]
+[node name="Box2" type="StaticBody2D" parent="Obstacles" unique_id=735048697]
 position = Vector2(288, 160)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Box2" unique_id=1254928102]
 shape = SubResource("RectangleShape2D_bwxsa")
 
-[node name="Box3" type="Area2D" parent="Obstacles" unique_id=1029973708]
+[node name="Box3" type="StaticBody2D" parent="Obstacles" unique_id=1706665703]
 position = Vector2(416, 160)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Box3" unique_id=2097082079]
 shape = SubResource("RectangleShape2D_bwxsa")
 
-[node name="Box4" type="Area2D" parent="Obstacles" unique_id=464011205]
+[node name="Box4" type="StaticBody2D" parent="Obstacles" unique_id=28616591]
 position = Vector2(544, 160)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Box4" unique_id=821472958]
 shape = SubResource("RectangleShape2D_bwxsa")
 
-[node name="Box5" type="Area2D" parent="Obstacles" unique_id=1737288141]
+[node name="Box5" type="StaticBody2D" parent="Obstacles" unique_id=279088357]
 position = Vector2(672, 96)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Box5" unique_id=291745172]
 shape = SubResource("RectangleShape2D_bwxsa")
 
-[node name="Box6" type="Area2D" parent="Obstacles" unique_id=918512244]
+[node name="Box6" type="StaticBody2D" parent="Obstacles" unique_id=47509379]
 position = Vector2(160, 288)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Box6" unique_id=1202240345]
 shape = SubResource("RectangleShape2D_bwxsa")
 
-[node name="Box7" type="Area2D" parent="Obstacles" unique_id=1396070696]
+[node name="Box7" type="StaticBody2D" parent="Obstacles" unique_id=659464283]
 position = Vector2(288, 288)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Box7" unique_id=1183004133]
 shape = SubResource("RectangleShape2D_bwxsa")
 
-[node name="Box8" type="Area2D" parent="Obstacles" unique_id=1446307501]
+[node name="Box8" type="StaticBody2D" parent="Obstacles" unique_id=595523122]
 position = Vector2(416, 288)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Box8" unique_id=520168407]
 shape = SubResource("RectangleShape2D_bwxsa")
 
-[node name="Box9" type="Area2D" parent="Obstacles" unique_id=1873586799]
+[node name="Box9" type="StaticBody2D" parent="Obstacles" unique_id=645507356]
 position = Vector2(544, 288)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Box9" unique_id=988956329]
 shape = SubResource("RectangleShape2D_bwxsa")
 
-[node name="Box10" type="Area2D" parent="Obstacles" unique_id=371565890]
+[node name="Box10" type="StaticBody2D" parent="Obstacles" unique_id=336227133]
 position = Vector2(672, 224)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Box10" unique_id=35686133]
 shape = SubResource("RectangleShape2D_bwxsa")
 
-[node name="Box11" type="Area2D" parent="Obstacles" unique_id=827779286]
+[node name="Box11" type="StaticBody2D" parent="Obstacles" unique_id=2048857501]
 position = Vector2(160, 416)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Box11" unique_id=881824726]
 shape = SubResource("RectangleShape2D_bwxsa")
 
-[node name="Box12" type="Area2D" parent="Obstacles" unique_id=1445269418]
+[node name="Box12" type="StaticBody2D" parent="Obstacles" unique_id=475772394]
 position = Vector2(288, 416)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Box12" unique_id=278336742]
 shape = SubResource("RectangleShape2D_bwxsa")
 
-[node name="Box13" type="Area2D" parent="Obstacles" unique_id=1481840155]
+[node name="Box13" type="StaticBody2D" parent="Obstacles" unique_id=1937277192]
 position = Vector2(416, 416)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Box13" unique_id=758562558]
 shape = SubResource("RectangleShape2D_bwxsa")
 
-[node name="Box14" type="Area2D" parent="Obstacles" unique_id=2036244079]
+[node name="Box14" type="StaticBody2D" parent="Obstacles" unique_id=1018032178]
 position = Vector2(544, 416)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Box14" unique_id=1728064257]
 shape = SubResource("RectangleShape2D_bwxsa")
 
-[node name="Box15" type="Area2D" parent="Obstacles" unique_id=606980217]
+[node name="Box15" type="StaticBody2D" parent="Obstacles" unique_id=1368642559]
 position = Vector2(672, 352)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacles/Box15" unique_id=386427532]
 shape = SubResource("RectangleShape2D_bwxsa")
 
 [node name="Player" parent="." unique_id=1170735177 instance=ExtResource("2_sxmrw")]
-position = Vector2(352, 160)
+position = Vector2(352, 96)
 
 [node name="Enemy" parent="." unique_id=1794450006 instance=ExtResource("3_fceun")]
-position = Vector2(224, 224)
-
-[node name="Enemy2" parent="." unique_id=254112764 instance=ExtResource("3_fceun")]
-modulate = Color(0.45882353, 0.47843137, 0.88235295, 1)
-position = Vector2(224, 352)
-
-[node name="Enemy3" parent="." unique_id=568634826 instance=ExtResource("3_fceun")]
-modulate = Color(0.21987173, 0.46917158, 0.24234155, 1)
-position = Vector2(480, 224)
-
-[node name="Enemy4" parent="." unique_id=291117496 instance=ExtResource("3_fceun")]
-modulate = Color(0.18947732, 0.31960583, 0.6978603, 1)
-position = Vector2(480, 352)
+position = Vector2(352, 416)
