@@ -8,10 +8,10 @@ extends Character;
 @onready var right_raycast: RayCast2D = $MovementArea/RightRayCast2D;
 
 # MOVE BUTTONS
-@onready var up_button: Button = $UI/UpButton;
-@onready var down_button: Button = $UI/DownButton;
-@onready var left_button: Button = $UI/LeftButton;
-@onready var right_button: Button = $UI/RightButton;
+@onready var up_button: Button = $UpButton;
+@onready var down_button: Button = $DownButton;
+@onready var left_button: Button = $LeftButton;
+@onready var right_button: Button = $RightButton;
 
 # TODO:
 # - the player can get power ups from items, such as double turn or a bigger
@@ -53,7 +53,10 @@ func _on_player_handle_is_moving_player_signal(is_moving: bool) -> void:
 
 func _on_move_button_pressed(node_path: String) -> void:
 	var button: Button = get_node(node_path);
-	var position_to_move: Vector2 = button.pivot_offset;
+	# FIX: Vector2(32, 32) is added here because the buttons' position is based
+	#on the top-left corner of the node. Find a way to use the center of the node
+	#as a reference to remove this calculation;
+	var position_to_move: Vector2 = button.position + Vector2(32, 32);
 	position += position_to_move;
 	TurnManager.is_moving_enemies_signal.emit();
 	TurnManager.is_moving_player_signal.emit(false);
