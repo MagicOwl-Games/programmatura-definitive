@@ -61,6 +61,8 @@ func _on_move_button_pressed(node_path: String) -> void:
 	TurnManager.is_moving_enemies_signal.emit();
 	TurnManager.is_moving_player_signal.emit(false);
 
+# TODO: use tilesets' physics layer to try and check the collisions
+#with raycast. for now staticbody2d seems to be working
 func handle_player_collision_check(is_moving: bool) -> void:
 	if is_moving:
 		up_raycast.force_raycast_update();
@@ -68,16 +70,6 @@ func handle_player_collision_check(is_moving: bool) -> void:
 		left_raycast.force_raycast_update();
 		right_raycast.force_raycast_update();
 		
-		# TODO: use tilesets' physics layer to try and check the collisions
-		#with raycast. for now staticbody2d seems to be working
-		print("up_raycast is colliding: %s" % up_raycast.is_colliding());
-		print("up_raycast collider: %s" % up_raycast.get_collider());
-		print("down_raycast is colliding: %s" % down_raycast.is_colliding());
-		print("down_raycast collider: %s" % down_raycast.get_collider());
-		print("left_raycast is colliding: %s" % left_raycast.is_colliding());
-		print("left_raycast collider: %s" % left_raycast.get_collider());
-		print("right_raycast is colliding: %s" % right_raycast.is_colliding());
-		print("right_raycast collider: %s" % right_raycast.get_collider());
 		
 		up_button.visible = !up_raycast.is_colliding();
 		down_button.visible = !down_raycast.is_colliding();
