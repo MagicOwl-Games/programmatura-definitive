@@ -27,6 +27,8 @@ enum Directions {
 @onready var right_raycast: RayCast2D = $MovementArea/RightRayCast2D;
 @onready var detection_area: Node2D = $DetectionArea;
 
+
+
 # FIX: still can't type it properly, try to figure out a way of defining its value
 #without using get_children().
 var collision_areas: Array;
@@ -35,7 +37,7 @@ var collision_areas: Array;
 func _ready() -> void:
 	# FIX: WOW!!! SUCH GOOD CODE MUCH WOW
 	#collision_areas = movement_area.get_children();
-	detection_area.hide();
+	#detection_area.hide();
 	init_detection_area();
 	TurnManager.is_moving_enemies_signal.connect(_on_enemy_handle_is_moving_enemies_signal);
 
@@ -44,12 +46,8 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_enemy_handle_is_moving_enemies_signal() -> void:
-	up_raycast.force_raycast_update();
-	down_raycast.force_raycast_update();
-	left_raycast.force_raycast_update();
-	right_raycast.force_raycast_update();
+	update_raycasts();
 	
-	var direction_to_move: RayCast2D = null;
 	var directions_array: Array[RayCast2D] = [
 		up_raycast,
 		down_raycast,
@@ -57,9 +55,14 @@ func _on_enemy_handle_is_moving_enemies_signal() -> void:
 		right_raycast,
 	];
 	
+	var direction_to_move: RayCast2D = null;
+	
+	# FIX: this loop is breaking the game, here and down below
+	# it was breaking because at some point the directions_array was full of null
+	#values, so I had to move it to inside the function to make it work.
 	while direction_to_move == null:
-		var random_direction = Directions.values().pick_random();
-		if !directions_array[random_direction].is_colliding():
+		var random_direction: Directions = Directions.values().pick_random();
+		if not directions_array[random_direction].is_colliding():
 			direction_to_move = directions_array[random_direction];
 	
 	match direction_to_move:
@@ -72,70 +75,40 @@ func _on_enemy_handle_is_moving_enemies_signal() -> void:
 		right_raycast:
 			position += Vector2(64, 0);
 	
-	#var free_areas: Array[Area2D] = [];
-#
-	#for area in collision_areas:
-		##print("area is area2D: %s" % area is Area2D);
-		##print("area is overlapping_areas: %s" % area.has_overlapping_areas());
-		## FIX: be more specific about the bodies
-		#if not area.has_overlapping_bodies():
-			##print("area info: %s" % area.name);
-			#free_areas.append(area);
-#
-	#if free_areas.size() == 0:
-		#return;
-	#
-	#if free_areas.size() == 1:
-		#self.position += free_areas[0].position;
-		#detection_area.position = free_areas[0].position;
-		#return;
-	#
-	#var free_random: Area2D = free_areas.pick_random();
-	#self.position += free_random.position;
-	#handle_detection_area();
-	##detection_area.position = free_random.position;
-#
-	##TurnManager.is_moving_enemies_signal.emit(false);
-
-#func handle_detection_area() -> void:
-	#var free_areas: Array[Area2D] = [];
-	#
-	#for area in collision_areas:
-		#if not area.has_overlapping_bodies():
-			#free_areas.append(area);
-	#
-	#if free_areas.size() == 0:
-		#return;
-	#
-	#if free_areas.size() == 1:
-		#detection_area.position = free_areas[0].position;
-		#detection_area.show();
-		#return;
-	#
-	##for area in free_areas:
-		##area.modulate = Color(20, 0, 0);
-		#
-	#var free_random: Area2D = free_areas.pick_random();
-	#detection_area.position = free_random.position;
-
+	
 # TODO: this logic should be a helper, it's duplicated
 func init_detection_area() -> void:
-	var free_areas: Array[Area2D] =  [];
+	update_raycasts();
 	
-	for area in collision_areas:
-		# FIX: be more specific
-		if not area.has_overlapping_bodies():
-			free_areas.append(area);
+	var directions_array: Array[RayCast2D] = [
+		up_raycast,
+		down_raycast,
+		left_raycast,
+		right_raycast,
+	];
 	
-	if free_areas.size() == 0:
-		return;
+	var enemy_vision: RayCast2D = null;
 	
-	if free_areas.size() == 1:
-		detection_area.position = free_areas[0].position;
-		detection_area.show();
-		return;
+	while enemy_vision == null:
+		var random_direction = Directions.values().pick_random();
+		if not directions_array[random_direction].is_colliding():
+			enemy_vision = directions_array[random_direction];
+
+	match enemy_vision:
+		up_raycast:
+			detection_area.position += Vector2(0, -64);
+		down_raycast:
+			detection_area.position += Vector2(0, 64);
+		left_raycast:
+			detection_area.position += Vector2(-64, 0);
+		right_raycast:
+			detection_area.position += Vector2(64, 0);
 	
 	
-	var free_random: Area2D = free_areas.pick_random();
-	detection_area.position = free_random.position;
-	detection_area.show();
+
+# HELPERS
+func update_raycasts():
+	up_raycast.force_raycast_update();
+	down_raycast.force_raycast_update();
+	left_raycast.force_raycast_update();
+	right_raycast.force_raycast_update();
