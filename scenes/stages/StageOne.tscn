@@ -1735,4 +1735,4 @@ shape = SubResource("RectangleShape2D_bwxsa")
 position = Vector2(352, 224)
 
 [node name="Enemy" parent="." unique_id=1794450006 instance=ExtResource("3_fceun")]
-position = Vector2(352, 416)
+position = Vector2(416, 352)
