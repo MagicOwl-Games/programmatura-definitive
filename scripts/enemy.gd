@@ -38,7 +38,9 @@ enum Directions {
 
 enum Move_Direction {
 	LEFT = -1,
-	RIGHT = 1
+	RIGHT = 1,
+	DOWN = 1,
+	UP = -1
 }
 
 @onready var up_raycast: RayCast2D = $MovementArea/UpRayCast2D;
@@ -155,19 +157,22 @@ func handle_enemy_movement() -> void:
 			if current_enemy_x == -1:
 				move_direction = Move_Direction.RIGHT;
 
-			print("move_direction is %s" % move_direction);
 			current_enemy_x += move_direction;
-			print("current enemy x is %s" % current_enemy_x);
-
-			pass;
+			self.position.x += (move_direction * TILE_SIZE);
 		Enemy_Movement_Type.VERTICAL:
-			pass;
+			print("enemy2 move direction is %s" % move_direction);
+			if current_enemy_y == -1:
+				move_direction = Move_Direction.DOWN;
+			if current_enemy_y == 1:
+				move_direction = Move_Direction.UP;
+
+			current_enemy_y += move_direction;
+			self.position.y += (move_direction * TILE_SIZE);
 		Enemy_Movement_Type.L_SHAPED:
 			pass;
 		Enemy_Movement_Type.FOUR_WAY:
 			pass;
 
-	self.position.x += (move_direction * TILE_SIZE);
 	
 # TODO: this logic should be a helper, it's duplicated
 func init_detection_area() -> void:
