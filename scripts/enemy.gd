@@ -51,11 +51,13 @@ enum Move_Direction {
 
 var current_enemy_x = 0;
 var current_enemy_y = 0;
-var last_enemy_x = current_enemy_x;
-var last_enemy_y = current_enemy_y;
-var next_enemy_x = 1;
-var next_enemy_y = 1;
+# var last_enemy_x = current_enemy_x;
+# var last_enemy_y = current_enemy_y;
+# var next_enemy_x = 1;
+# var next_enemy_y = 1;
 var move_direction = Move_Direction.RIGHT;
+
+var detection_area_current_position: Move_Direction;
 
 const TILE_SIZE = 64;
 
@@ -160,7 +162,6 @@ func handle_enemy_movement() -> void:
 			current_enemy_x += move_direction;
 			self.position.x += (move_direction * TILE_SIZE);
 		Enemy_Movement_Type.VERTICAL:
-			print("enemy2 move direction is %s" % move_direction);
 			if current_enemy_y == -1:
 				move_direction = Move_Direction.DOWN;
 			if current_enemy_y == 1:
@@ -173,6 +174,23 @@ func handle_enemy_movement() -> void:
 		Enemy_Movement_Type.FOUR_WAY:
 			pass;
 
+	handle_enemy_detection();
+
+
+func handle_enemy_detection() -> void:
+	update_raycasts();
+
+	match movement_type:
+		Enemy_Movement_Type.HORIZONTAL:
+			if right_raycast.is_colliding():
+				var collider = right_raycast.get_collider();
+				if collider.is_in_group("obstacles"):
+					self.rotation_degrees += 180;
+				if collider.is_in_group("player"):
+					print("player got caught!!");
+			if current_enemy_x == Move_Direction.LEFT or (current_enemy_x == Move_Direction.RIGHT and not right_raycast.is_colliding()):
+				print(current_enemy_x);
+				self.rotation_degrees += 180;
 	
 # TODO: this logic should be a helper, it's duplicated
 func init_detection_area() -> void:
@@ -186,21 +204,42 @@ func init_detection_area() -> void:
 	];
 	
 	var enemy_vision: RayCast2D = null;
-	
-	while enemy_vision == null:
-		var random_direction = Directions.values().pick_random();
-		if not directions_array[random_direction].is_colliding():
-			enemy_vision = directions_array[random_direction];
 
-	match enemy_vision:
-		up_raycast:
-			detection_area.position += positions.up;
-		down_raycast:
-			detection_area.position += positions.down;
-		left_raycast:
-			detection_area.position += positions.left;
-		right_raycast:
-			detection_area.position += positions.right;
+	match movement_type:
+		Enemy_Movement_Type.HORIZONTAL:
+			print("right_raycast is colliding: %s" % right_raycast.is_colliding());
+			if not right_raycast.is_colliding():
+				detection_area.position.x += (Move_Direction.RIGHT * TILE_SIZE);
+				detection_area_current_position = Move_Direction.RIGHT;
+			else:
+				detection_area.position.x += (Move_Direction.LEFT * TILE_SIZE);
+				detection_area_current_position = Move_Direction.LEFT;
+		Enemy_Movement_Type.VERTICAL:
+			if not down_raycast.is_colliding():
+				detection_area.position.y += (Move_Direction.DOWN * TILE_SIZE);
+				detection_area_current_position = Move_Direction.DOWN;
+			else:
+				detection_area.position.y += (Move_Direction.UP * TILE_SIZE);
+				detection_area_current_position = Move_Direction.UP;
+		Enemy_Movement_Type.L_SHAPED:
+			pass;
+		Enemy_Movement_Type.FOUR_WAY:
+			pass;
+	
+	# while enemy_vision == null:
+	# 	var random_direction = Directions.values().pick_random();
+	# 	if not directions_array[random_direction].is_colliding():
+	# 		enemy_vision = directions_array[random_direction];
+
+	# match enemy_vision:
+	# 	up_raycast:
+	# 		detection_area.position += positions.up;
+	# 	down_raycast:
+	# 		detection_area.position += positions.down;
+	# 	left_raycast:
+	# 		detection_area.position += positions.left;
+	# 	right_raycast:
+	# 		detection_area.position += positions.right;
 	
 	
 
