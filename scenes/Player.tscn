@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://cmy7nq4k3vi1m" path="res://assets/PNG/Default (64px)/Characters/green_hand.png" id="3_3li8b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
-size = Vector2(64, 64)
+size = Vector2(56, 56)
 
-[node name="Player" type="CharacterBody2D" unique_id=1170735177]
+[node name="Player" type="CharacterBody2D" unique_id=1170735177 groups=["player"]]
 script = ExtResource("1_v6fml")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1991211972]

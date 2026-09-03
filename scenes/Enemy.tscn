@@ -20,23 +20,28 @@ shape = SubResource("RectangleShape2D_x15ge")
 
 [node name="UpRayCast2D" type="RayCast2D" parent="MovementArea" unique_id=1722735901]
 position = Vector2(0, -36)
-target_position = Vector2(0, -28)
+target_position = Vector2(0, -20)
 hit_from_inside = true
 
 [node name="DownRayCast2D" type="RayCast2D" parent="MovementArea" unique_id=45991471]
 position = Vector2(0, 36)
-target_position = Vector2(0, 28)
+target_position = Vector2(0, 20)
 hit_from_inside = true
 
 [node name="LeftRayCast2D" type="RayCast2D" parent="MovementArea" unique_id=438923969]
 position = Vector2(-36, 0)
-target_position = Vector2(-28, 0)
+target_position = Vector2(-20, 0)
 hit_from_inside = true
 
 [node name="RightRayCast2D" type="RayCast2D" parent="MovementArea" unique_id=1353376877]
 position = Vector2(36, 0)
-target_position = Vector2(28, 0)
+target_position = Vector2(20, 0)
 hit_from_inside = true
 
 [node name="DetectionArea" type="Sprite2D" parent="." unique_id=1179171825]
 texture = ExtResource("3_mpr68")
+
+[node name="RayCast2D" type="RayCast2D" parent="DetectionArea" unique_id=1921121323]
+position = Vector2(0, -8)
+target_position = Vector2(0, 16)
+hit_from_inside = true

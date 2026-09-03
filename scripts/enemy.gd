@@ -48,6 +48,8 @@ enum Move_Direction {
 @onready var left_raycast: RayCast2D = $MovementArea/LeftRayCast2D;
 @onready var right_raycast: RayCast2D = $MovementArea/RightRayCast2D;
 @onready var detection_area: Sprite2D = $DetectionArea;
+@onready var detection_area_raycast: RayCast2D = $DetectionArea/RayCast2D
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D;
 
 var current_enemy_x = 0;
 var current_enemy_y = 0;
@@ -98,9 +100,24 @@ func handle_enemy_movement() -> void:
 				move_direction = Move_Direction.LEFT;
 
 			current_enemy_x += move_direction;
-			self.position.x += (move_direction * TILE_SIZE);
-
-
+			
+			var tween = create_tween();
+			tween.tween_property(
+				self,
+				"position:x",
+				move_direction * TILE_SIZE,
+				1
+			).as_relative();
+			
+			print(current_enemy_x);
+			if current_enemy_x == Move_Direction.LEFT or current_enemy_x == Move_Direction.RIGHT:
+				tween.tween_property(
+					self,
+					"rotation_degrees",
+					180,
+					1
+				).as_relative();
+				
 		Enemy_Movement_Type.VERTICAL:
 			if current_enemy_y == -1:
 				move_direction = Move_Direction.DOWN;
@@ -109,6 +126,9 @@ func handle_enemy_movement() -> void:
 
 			current_enemy_y += move_direction;
 			self.position.y += (move_direction * TILE_SIZE);
+			
+			if current_enemy_y == Move_Direction.UP or current_enemy_y == Move_Direction.DOWN:
+				self.rotation_degrees += 180;
 		Enemy_Movement_Type.L_SHAPED:
 			pass;
 		Enemy_Movement_Type.FOUR_WAY:
@@ -118,10 +138,21 @@ func handle_enemy_movement() -> void:
 
 
 func handle_enemy_detection() -> void:
-	update_raycasts();
+	#update_raycasts();
+	#detection_area_raycast.force_raycast_update();
+	
 
+	# FIXME: raycast detection is crazy, it looks late even though force_raycast_update
+	#is called. gotta see it later
 	match movement_type:
 		Enemy_Movement_Type.HORIZONTAL:
+			print("first detection area raycast is colliding %s" % detection_area_raycast.is_colliding());
+			detection_area_raycast.force_raycast_update();
+			#print("second detection area raycast is colliding %s" % detection_area_raycast.is_colliding());
+			if detection_area_raycast.is_colliding():
+				var collider = detection_area_raycast.get_collider();
+				if collider.is_in_group("player"):
+					print("player got caught!");
 			# if right_raycast.is_colliding():
 			# 	var collider = right_raycast.get_collider();
 			# 	if collider.is_in_group("obstacles"):
@@ -129,32 +160,34 @@ func handle_enemy_detection() -> void:
 			# 	if collider.is_in_group("player"):
 			# 		print("player got caught!!");
 			# 	return;
-			if current_enemy_x == Move_Direction.LEFT:
-				self.rotation_degrees += 180;
-				return;
-			if current_enemy_x == Move_Direction.RIGHT:
-				self.rotation_degrees += 180;
-				return;
+			#if current_enemy_x == Move_Direction.LEFT:
+				#self.rotation_degrees += 180;
+				#return;
+			#if current_enemy_x == Move_Direction.RIGHT:
+				#self.rotation_degrees += 180;
+				#return;
 		Enemy_Movement_Type.VERTICAL:
-			if current_enemy_y == Move_Direction.DOWN:
-				self.rotation_degrees += 180;
-				return;
-			if current_enemy_y == Move_Direction.UP:
-				self.rotation_degrees += 180;
-				return;
+			pass;
+			#if current_enemy_y == Move_Direction.DOWN:
+				#self.rotation_degrees += 180;
+				#return;
+			#if current_enemy_y == Move_Direction.UP:
+				#self.rotation_degrees += 180;
+				#return;
 	
 # TODO: this logic should be a helper, it's duplicated
 func init_detection_area() -> void:
 	update_raycasts();
+	detection_area_raycast.force_raycast_update();
 	
-	var directions_array: Array[RayCast2D] = [
-		up_raycast,
-		down_raycast,
-		left_raycast,
-		right_raycast,
-	];
-	
-	var enemy_vision: RayCast2D = null;
+	#var directions_array: Array[RayCast2D] = [
+		#up_raycast,
+		#down_raycast,
+		#left_raycast,
+		#right_raycast,
+	#];
+	#
+	#var enemy_vision: RayCast2D = null;
 
 	match movement_type:
 		Enemy_Movement_Type.HORIZONTAL:
